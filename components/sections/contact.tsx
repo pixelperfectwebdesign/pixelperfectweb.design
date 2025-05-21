@@ -192,8 +192,8 @@ export default function Contact() {
             <ContactInfo
               icon={<Phone className="h-5 w-5" />}
               title="Call Us"
-              details="+1 (555) 123-4567"
-              href="tel:+15551234567"
+              details="+1 (316) 469-4365"
+              href="tel:+13164694365"
             />
             <div className="p-6 rounded-lg border bg-card/50 mt-8">
               <h3 className="font-medium mb-2">Our Availability</h3>
