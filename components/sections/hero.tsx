@@ -3,14 +3,9 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { PopupWidget } from "react-calendly";
 
 export default function Hero() {
-  const handleBookConsult = () => {
-    const contactSection = document.querySelector("#contact");
-    contactSection?.scrollIntoView({ behavior: "smooth" });
-  };
-
   const handleViewWork = () => {
     const portfolioSection = document.querySelector("#portfolio");
     portfolioSection?.scrollIntoView({ behavior: "smooth" });
@@ -43,10 +38,13 @@ export default function Hero() {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <Button size="lg" className="group animate-fade-in" onClick={handleBookConsult}>
-            <span>Book Free Consultation</span>
-            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          <PopupWidget 
+            url="https://calendly.com/your-calendly-url"
+            rootElement={document.body}
+            text="Book Free Consultation"
+            textColor="#FFFFFF"
+            color="#3B82F6"
+          />
           <Button size="lg" variant="outline" className="animate-fade-in delay-100" onClick={handleViewWork}>
             View Our Work
           </Button>
