@@ -84,35 +84,59 @@ export default function Hero() {
           </Button>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-4xl mx-auto">
           {[
             {
-              icon: <Code className="h-10 w-10 mb-3 text-primary" />,
+              icon: <Code className="h-12 w-12 mb-4" />,
               title: "Clean Code",
               description: "We write clean, maintainable code that scales with your business.",
+              gradient: "from-primary via-blue-500 to-cyan-500",
             },
             {
-              icon: <Sparkles className="h-10 w-10 mb-3 text-primary" />,
+              icon: <Sparkles className="h-12 w-12 mb-4" />,
               title: "Beautiful Design",
               description: "Pixel-perfect UI/UX design that engages and delights your users.",
+              gradient: "from-purple-500 via-pink-500 to-rose-500",
             },
             {
-              icon: <Zap className="h-10 w-10 mb-3 text-primary" />,
+              icon: <Zap className="h-12 w-12 mb-4" />,
               title: "Fast Performance",
               description: "Optimized for speed to ensure the best user experience.",
+              gradient: "from-amber-500 via-orange-500 to-red-500",
             },
           ].map((card, index) => (
             <div
               key={index}
               className={cn(
-                "relative p-6 rounded-xl border bg-card/50 backdrop-blur-sm shadow-sm transition-all duration-300 animated-card animate-fade-in gradient-card",
-                "hover:border-primary/50"
+                "group relative p-8 rounded-xl transition-all duration-300 animated-card animate-fade-in overflow-hidden",
+                "bg-gradient-to-br from-background to-background border",
+                "hover:border-transparent"
               )}
               style={{ animationDelay: `${index * 100 + 200}ms` }}
             >
-              {card.icon}
-              <h3 className="font-semibold text-lg mb-2">{card.title}</h3>
-              <p className="text-muted-foreground text-sm">{card.description}</p>
+              <div className={cn(
+                "absolute inset-[1px] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+                "bg-gradient-to-br",
+                card.gradient,
+                "blur-xl"
+              )} />
+              <div className="relative bg-background/80 backdrop-blur-sm rounded-lg p-6">
+                <div className={cn(
+                  "inline-flex p-3 rounded-lg mb-4",
+                  "bg-gradient-to-br",
+                  card.gradient,
+                  "bg-clip-text"
+                )}>
+                  {React.cloneElement(card.icon, {
+                    className: cn(
+                      card.icon.props.className,
+                      "text-transparent"
+                    )
+                  })}
+                </div>
+                <h3 className="font-semibold text-xl mb-2">{card.title}</h3>
+                <p className="text-muted-foreground">{card.description}</p>
+              </div>
             </div>
           ))}
         </div>
