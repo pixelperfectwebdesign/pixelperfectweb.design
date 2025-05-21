@@ -198,11 +198,11 @@ export default function Contact() {
             <div className="p-6 rounded-lg border bg-card/50 mt-8">
               <h3 className="font-medium mb-2">Our Availability</h3>
               <p className="text-sm text-muted-foreground mb-4">
-                We're available Monday through Friday, 9am to 6pm PST.
+                We're available Monday through Friday, 9am to 5pm CST.
               </p>
               <div className="space-y-2">
                 {[
-                  { day: "Monday - Friday", hours: "9:00 AM - 6:00 PM" },
+                  { day: "Monday - Friday", hours: "9:00 AM - 5:00 PM CST" },
                   { day: "Saturday", hours: "By appointment" },
                   { day: "Sunday", hours: "Closed" },
                 ].map((schedule, index) => (
