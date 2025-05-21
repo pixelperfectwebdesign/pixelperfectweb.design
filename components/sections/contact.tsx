@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { InlineWidget } from "react-calendly";
 import { 
   Mail, 
   Phone,
@@ -95,98 +96,113 @@ export default function Contact() {
             Ready to <span className="text-primary">transform</span> your digital presence?
           </h2>
           <p className="text-muted-foreground max-w-md">
-            Have a project in mind or want to learn more about our services? We'd love to hear from you.
+            Schedule a free consultation or send us a message. We'd love to hear about your project.
           </p>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4">Schedule a Free Consultation</h3>
+              <div className="rounded-lg border bg-card/50">
+                <InlineWidget 
+                  url="https://calendly.com/your-calendly-url" 
+                  styles={{
+                    height: '650px',
+                    width: '100%',
+                  }}
+                />
+              </div>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Or Send Us a Message</h3>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="text-sm font-medium">
+                      Full Name
+                    </label>
+                    <Input
+                      id="name"
+                      name="name"
+                      placeholder="John Smith"
+                      value={formState.name}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-sm font-medium">
+                      Email Address
+                    </label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="john@example.com"
+                      value={formState.email}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                </div>
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium">
-                    Full Name
+                  <label htmlFor="subject" className="text-sm font-medium">
+                    Subject
                   </label>
                   <Input
-                    id="name"
-                    name="name"
-                    placeholder="John Smith"
-                    value={formState.name}
+                    id="subject"
+                    name="subject"
+                    placeholder="Project Inquiry"
+                    value={formState.subject}
                     onChange={handleChange}
                     required
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">
-                    Email Address
+                  <label htmlFor="message" className="text-sm font-medium">
+                    Message
                   </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="john@example.com"
-                    value={formState.email}
+                  <Textarea
+                    id="message"
+                    name="message"
+                    placeholder="Tell us about your project..."
+                    rows={6}
+                    value={formState.message}
                     onChange={handleChange}
                     required
                   />
                 </div>
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="subject" className="text-sm font-medium">
-                  Subject
-                </label>
-                <Input
-                  id="subject"
-                  name="subject"
-                  placeholder="Project Inquiry"
-                  value={formState.subject}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium">
-                  Message
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  placeholder="Tell us about your project..."
-                  rows={6}
-                  value={formState.message}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <Button 
-                type="submit" 
-                size="lg" 
-                className="w-full md:w-auto"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <>
-                    <span>Sending Message</span>
-                    <svg className="ml-2 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                  </>
-                ) : (
-                  <>
-                    <span>Send Message</span>
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </>
-                )}
-              </Button>
-            </form>
+                <Button 
+                  type="submit" 
+                  size="lg" 
+                  className="w-full md:w-auto"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <span>Sending Message</span>
+                      <svg className="ml-2 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      <span>Send Message</span>
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </>
+                  )}
+                </Button>
+              </form>
+            </div>
           </div>
           
           <div className="space-y-6">
             <ContactInfo
               icon={<Mail className="h-5 w-5" />}
               title="Email Us"
-              details="contact@pixelperfectweb.desgin"
+              details="contact@pixelperfect.design"
               href="mailto:contact@pixelperfect.design"
             />
             <ContactInfo
