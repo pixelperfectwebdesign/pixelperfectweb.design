@@ -8,8 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { 
   Mail, 
-  Phone, 
-  MapPin, 
+  Phone,
   ArrowRight
 } from "lucide-react";
 
@@ -195,12 +194,6 @@ export default function Contact() {
               title="Call Us"
               details="+1 (555) 123-4567"
               href="tel:+15551234567"
-            />
-            <ContactInfo
-              icon={<MapPin className="h-5 w-5" />}
-              title="Visit Us"
-              details="123 Tech Plaza, San Francisco, CA 94103"
-              href="https://maps.google.com"
             />
             <div className="p-6 rounded-lg border bg-card/50 mt-8">
               <h3 className="font-medium mb-2">Our Availability</h3>
