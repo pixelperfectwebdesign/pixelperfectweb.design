@@ -57,20 +57,20 @@ export default function Hero() {
       <div className="container px-4 flex flex-col items-center text-center">
         <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm leading-none mb-8 animate-fade-in">
           <span className="flex h-2 w-2 rounded-full bg-teal-500 mr-2"></span>
-          <span>We bring your digital ideas to life</span>
+          <span>Hi! We're Zach & Dylan</span>
         </div>
         
         <h1 className="font-bold tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 max-w-5xl md:leading-tight">
-          Creating <span className="text-primary">impactful</span> digital experiences with{" "}
+          We build <span className="text-primary">beautiful</span> websites that{" "}
           <span className="relative text-primary inline-block">
-            precision
+            work
             <span className="absolute -bottom-1 left-0 h-[6px] w-full bg-gradient-to-r from-primary/70 to-secondary/70 rounded-sm"></span>
           </span>
         </h1>
         
         <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mb-10">
-          We're a team of designers and developers crafting beautiful, functional websites
-          and applications that help businesses grow.
+          We're two developers passionate about helping small businesses grow online. 
+          We build fast, mobile-first websites that make your business look great.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-20">
