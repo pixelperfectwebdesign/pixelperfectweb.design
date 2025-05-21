@@ -13,7 +13,7 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: 'Zach & Dylan | Web Development Studio',
+  title: 'Pixel Perfect',
   description: 'Crafting beautiful, functional websites that help businesses grow.',
   icons: {
     icon: '/favicon.ico',
