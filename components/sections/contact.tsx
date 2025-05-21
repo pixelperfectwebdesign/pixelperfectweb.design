@@ -186,8 +186,8 @@ export default function Contact() {
             <ContactInfo
               icon={<Mail className="h-5 w-5" />}
               title="Email Us"
-              details="hello@pixelperfect.dev"
-              href="mailto:hello@pixelperfect.dev"
+              details="contact@pixelperfectweb.desgin"
+              href="mailto:contact@pixelperfect.design"
             />
             <ContactInfo
               icon={<Phone className="h-5 w-5" />}
