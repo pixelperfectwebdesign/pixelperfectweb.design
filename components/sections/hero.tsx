@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Calendar, Briefcase } from "lucide-react";
 import { PopupWidget } from "react-calendly";
 
 export default function Hero() {
@@ -38,15 +38,14 @@ export default function Hero() {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <PopupWidget 
-            url="https://calendly.com/your-calendly-url"
-            rootElement={document.body}
-            text="Book Free Consultation"
-            textColor="#FFFFFF"
-            color="#3B82F6"
-          />
+          <Button size="lg" className="group animate-fade-in" onClick={() => window.Calendly.initPopupWidget({ url: 'https://calendly.com/your-calendly-url' })}>
+            <Calendar className="mr-2 h-4 w-4" />
+            <span>Book Free Consultation</span>
+            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          </Button>
           <Button size="lg" variant="outline" className="animate-fade-in delay-100" onClick={handleViewWork}>
-            View Our Work
+            <Briefcase className="mr-2 h-4 w-4" />
+            <span>View Our Work</span>
           </Button>
         </div>
       </div>
