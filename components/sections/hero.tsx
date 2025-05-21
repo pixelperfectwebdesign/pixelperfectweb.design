@@ -1,43 +1,11 @@
 'use client';
 
 import React from "react";
-import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Code, Sparkles, Zap } from "lucide-react";
-import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return;
-      
-      const { left, top, width, height } = containerRef.current.getBoundingClientRect();
-      const x = (e.clientX - left) / width - 0.5;
-      const y = (e.clientY - top) / height - 0.5;
-      
-      const cards = containerRef.current.querySelectorAll('.animated-card');
-      cards.forEach((card) => {
-        if (card instanceof HTMLElement) {
-          card.style.transform = `perspective(1000px) rotateY(${x * 4}deg) rotateX(${y * -4}deg) translateZ(10px)`;
-        }
-      });
-    };
-    
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener('mousemove', handleMouseMove);
-    }
-    
-    return () => {
-      if (container) {
-        container.removeEventListener('mousemove', handleMouseMove);
-      }
-    };
-  }, []);
-
   const handleBookConsult = () => {
     const contactSection = document.querySelector("#contact");
     contactSection?.scrollIntoView({ behavior: "smooth" });
@@ -52,7 +20,6 @@ export default function Hero() {
     <section 
       id="home" 
       className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden"
-      ref={containerRef}
     >
       <div className="absolute inset-0 -z-10 bg-muted/50" />
       
@@ -75,7 +42,7 @@ export default function Hero() {
           We build fast, mobile-first websites that make your business look great.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-20">
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
           <Button size="lg" className="group animate-fade-in" onClick={handleBookConsult}>
             <span>Book Free Consultation</span>
             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -83,42 +50,6 @@ export default function Hero() {
           <Button size="lg" variant="outline" className="animate-fade-in delay-100" onClick={handleViewWork}>
             View Our Work
           </Button>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-4xl mx-auto">
-          {[
-            {
-              icon: <Code className="h-12 w-12 mb-4 text-primary" />,
-              title: "Clean Code",
-              description: "We write clean, maintainable code that scales with your business.",
-            },
-            {
-              icon: <Sparkles className="h-12 w-12 mb-4 text-primary" />,
-              title: "Beautiful Design",
-              description: "Pixel-perfect UI/UX design that engages and delights your users.",
-            },
-            {
-              icon: <Zap className="h-12 w-12 mb-4 text-primary" />,
-              title: "Fast Performance",
-              description: "Optimized for speed to ensure the best user experience.",
-            },
-          ].map((card, index) => (
-            <div
-              key={index}
-              className={cn(
-                "group relative p-8 rounded-xl border bg-card/50 backdrop-blur-sm",
-                "hover:bg-card hover:shadow-lg",
-                "transition-all duration-300 animated-card animate-fade-in"
-              )}
-              style={{ animationDelay: `${index * 100 + 200}ms` }}
-            >
-              <div className="flex flex-col items-center">
-                {card.icon}
-                <h3 className="font-semibold text-xl mb-2">{card.title}</h3>
-                <p className="text-muted-foreground">{card.description}</p>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
       
