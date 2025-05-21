@@ -1,19 +1,11 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const categories = [
-  "All",
-  "Web Design",
-  "E-Commerce",
-  "Mobile Apps",
-  "Branding",
-];
 
 const projects = [
   {
@@ -22,28 +14,20 @@ const projects = [
       "Complete overhaul of a financial services website with improved UI/UX.",
     image:
       "https://images.pexels.com/photos/5989933/pexels-photo-5989933.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    category: "Web Design",
     tags: ["React", "Framer Motion", "TypeScript"],
   },
   {
-    title: "Resturant Deals App",
+    title: "Restaurant Deals App",
     description:
       "Mobile application for a local restaurant chain with real-time order tracking.",
     image:
       "https://images.pexels.com/photos/5053848/pexels-photo-5053848.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    category: "Mobile Apps",
     tags: ["Flutter", "Node.js", "Google Maps API"],
   },
 ];
 
 export default function Portfolio() {
-  const [activeCategory, setActiveCategory] = useState("All");
   const sectionRef = useRef<HTMLElement>(null);
-
-  const filteredProjects =
-    activeCategory === "All"
-      ? projects
-      : projects.filter((project) => project.category === activeCategory);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -67,7 +51,7 @@ export default function Portfolio() {
         observer.unobserve(project);
       });
     };
-  }, [activeCategory]);
+  }, []);
 
   return (
     <section
@@ -83,23 +67,13 @@ export default function Portfolio() {
           <h2 className="text-3xl md:text-4xl font-bold max-w-md mb-4 md:mb-0">
             Recent <span className="text-primary">projects</span> we're proud of
           </h2>
-          <div className="flex flex-wrap gap-2">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={activeCategory === category ? "default" : "outline"}
-                size="sm"
-                onClick={() => setActiveCategory(category)}
-                className="transition-all duration-300"
-              >
-                {category}
-              </Button>
-            ))}
-          </div>
+          <p className="text-muted-foreground max-w-md">
+            Here are some examples of our recent work. Each project is crafted with attention to detail and focus on user experience.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((project, index) => (
             <div
               key={index}
               className={cn(
