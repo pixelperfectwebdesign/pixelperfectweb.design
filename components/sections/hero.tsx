@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
@@ -52,19 +52,19 @@ export default function Hero() {
       className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden"
       ref={containerRef}
     >
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background"></div>
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-blue-500/5 to-background"></div>
       
       <div className="container px-4 flex flex-col items-center text-center">
-        <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm leading-none mb-8 animate-fade-in">
-          <span className="flex h-2 w-2 rounded-full bg-teal-500 mr-2"></span>
+        <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm leading-none mb-8 animate-fade-in gradient-border">
+          <span className="flex h-2 w-2 rounded-full bg-gradient-to-r from-primary via-blue-500 to-cyan-500 mr-2"></span>
           <span>Hi! We're Zach & Dylan</span>
         </div>
         
         <h1 className="font-bold tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 max-w-5xl md:leading-tight">
-          We build <span className="text-primary">beautiful</span> websites that{" "}
-          <span className="relative text-primary inline-block">
+          We build <span className="gradient-text">beautiful</span> websites that{" "}
+          <span className="relative gradient-text inline-block">
             work
-            <span className="absolute -bottom-1 left-0 h-[6px] w-full bg-gradient-to-r from-primary/70 to-secondary/70 rounded-sm"></span>
+            <span className="absolute -bottom-1 left-0 h-[6px] w-full bg-gradient-to-r from-primary via-blue-500 to-cyan-500 rounded-sm opacity-50"></span>
           </span>
         </h1>
         
@@ -74,7 +74,7 @@ export default function Hero() {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-20">
-          <Button size="lg" className="group animate-fade-in" onClick={handleBookConsult}>
+          <Button size="lg" className="group animate-fade-in gradient-border bg-background" onClick={handleBookConsult}>
             <span>Book Free Consultation</span>
             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Button>
@@ -103,7 +103,10 @@ export default function Hero() {
           ].map((card, index) => (
             <div
               key={index}
-              className="relative p-6 rounded-xl border bg-card/50 backdrop-blur-sm shadow-sm transition-all duration-300 animated-card animate-fade-in"
+              className={cn(
+                "relative p-6 rounded-xl border bg-card/50 backdrop-blur-sm shadow-sm transition-all duration-300 animated-card animate-fade-in gradient-card",
+                "hover:border-primary/50"
+              )}
               style={{ animationDelay: `${index * 100 + 200}ms` }}
             >
               {card.icon}
@@ -114,7 +117,7 @@ export default function Hero() {
         </div>
       </div>
       
-      <div className="absolute -bottom-48 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-primary/20 via-primary/10 to-transparent blur-3xl rounded-full -z-10"></div>
+      <div className="absolute -bottom-48 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-primary/20 via-blue-500/10 to-transparent blur-3xl rounded-full -z-10"></div>
     </section>
   );
 }
