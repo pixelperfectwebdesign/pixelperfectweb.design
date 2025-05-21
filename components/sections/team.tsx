@@ -101,7 +101,7 @@ export default function Team() {
       name: "Zach Young",
       role: "Web Developer & Co-Founder",
       image:
-        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       bio: "Award-winning designer with a keen eye for aesthetics and user experience. Leads our design team with vision and precision.",
     },
   ];
@@ -118,7 +118,7 @@ export default function Team() {
             success
           </h2>
           <p className="text-muted-foreground max-w-md">
-            We’re Zach and Dylan — two developers passionate about helping small
+            We're Zach and Dylan — two developers passionate about helping small
             businesses grow online. We build fast, mobile-first websites that
             make your business look great.
           </p>
