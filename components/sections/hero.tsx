@@ -1,5 +1,4 @@
-"use client";
-
+import React from "react";
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code, Sparkles, Zap } from "lucide-react";
