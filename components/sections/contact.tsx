@@ -202,7 +202,7 @@ export default function Contact() {
               </p>
               <div className="space-y-2">
                 {[
-                  { day: "Monday - Friday", hours: "9:00 AM - 5:00 PM CST" },
+                  { day: "Monday - Friday", hours: "9:00 AM - 5:00 PM" },
                   { day: "Saturday", hours: "By appointment" },
                   { day: "Sunday", hours: "Closed" },
                 ].map((schedule, index) => (
