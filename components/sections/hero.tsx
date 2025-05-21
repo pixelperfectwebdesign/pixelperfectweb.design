@@ -1,11 +1,26 @@
 'use client';
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, Briefcase } from "lucide-react";
 import { PopupWidget } from "react-calendly";
 
 export default function Hero() {
+  useEffect(() => {
+    if (!window.Calendly) {
+      const script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
+  const handleBookConsultation = () => {
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({ url: 'https://calendly.com/your-calendly-url' });
+    }
+  };
+
   const handleViewWork = () => {
     const portfolioSection = document.querySelector("#portfolio");
     portfolioSection?.scrollIntoView({ behavior: "smooth" });
@@ -38,7 +53,7 @@ export default function Hero() {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <Button size="lg" className="group animate-fade-in" onClick={() => window.Calendly.initPopupWidget({ url: 'https://calendly.com/your-calendly-url' })}>
+          <Button size="lg" className="group animate-fade-in" onClick={handleBookConsultation}>
             <Calendar className="mr-2 h-4 w-4" />
             <span>Book Free Consultation</span>
             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
